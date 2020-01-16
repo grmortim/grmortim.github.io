@@ -96,6 +96,6 @@ li.dropdown {
 }
 #map{
     width:50% !important;
-    height:50% !important;
+    height:300px !important;
     position: fixed !important; 
 }
