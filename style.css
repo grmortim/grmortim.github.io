@@ -95,5 +95,6 @@ li.dropdown {
   text-align:justify;
 }
 #map{
+  display: block;
   height:100%;
 }
