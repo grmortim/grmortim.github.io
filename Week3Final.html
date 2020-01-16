@@ -48,13 +48,14 @@
 
 <script>
 var map;
+
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
       center: new google.maps.LatLng(43.684779, -79.444011),
       mapTypeId: 'terrain'});
-      packageName = "chemical-tracking-chemtrac";
-      map.data.loadGeoJson("https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=${packageName}");
+      map.data.loadGeoJson("https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=${chemical-tracking-chemtrac}");
 }
 </script>
 
