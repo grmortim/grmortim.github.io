@@ -57,10 +57,8 @@ function initMap() {
       mapTypeId: 'terrain'
     });
       var promise = $.getJSON("Cancer_Rates.geojson"); //same as map.data.loadGeoJson();
-			promise.then(function(data){
-				cachedGeoJson = data; //save the geojson in case we want to update its values
-				map.data.addGeoJson(cachedGeoJson,{idPropertyName:"id"});  
-            });
+			map.data.addGeoJson(promise);  
+            
 }
 </script>
 
