@@ -35,8 +35,9 @@
 <div class="rowContainer">
     <h2 class="wide">EARTH QUAKES</h2>
     <p class="opacity"><i>The Map, The Main, The Tectonic Shift</i></p>
-    <p class="justify">One look at the lush, expansive hills and valleys of Niagara and you’ll know. This is wine country. In fact, the Niagara Peninsula is one of the most acclaimed grape-growing and winemaking regions in Ontario. Gently blanketing much of the Niagara countryside, the countless vineyards and wineries offer a wide array of one-of-kind, intimate experiences. Whether you’re a serious connoisseur, or a wandering grazer more interested in food and views, our portfolio of wineries is a great place to start when planning your next trip.
-        If you’ve never experienced a tasting room or a winery tour you’ll quickly become hooked. Each winery in Niagara has a unique atmosphere, its own winemaker and beautifully crafted wines that embody “terroir;” wine speak that simply means that the wine reflects the soils and conditions in which the grapes have been grown. This is where tasting becomes so important as you sip and savour to discover your preferences.</p>
+    <p class="justify">An earthquake (also known as a quake, tremor or temblor) is the shaking of the surface of the Earth resulting from a sudden release of energy in the Earth's lithosphere that creates seismic waves. Earthquakes can range in size from those that are so weak that they cannot be felt to those violent enough to propel objects (and people) into the air, and wreak destruction across entire cities. The seismicity, or seismic activity, of an area is the frequency, type, and size of earthquakes experienced over a period of time. The word tremor is also used for non-earthquake seismic rumbling.
+
+        At the Earth's surface, earthquakes manifest themselves by shaking and displacing or disrupting the ground. When the epicenter of a large earthquake is located offshore, the seabed may be displaced sufficiently to cause a tsunami. Earthquakes can also trigger landslides and occasionally, volcanic activity.</p>
 </div>
 
 <div class="rowContainer">
@@ -68,20 +69,18 @@
     };
   });
 }
-
-function getCircle(magnitude) {
-  return {
-    path: google.maps.SymbolPath.CIRCLE,
-    fillColor: 'red',
-    fillOpacity: .2,
-    scale: Math.pow(2, magnitude) / 2,
-    strokeColor: 'white',
-    strokeWeight: .5
-  };
-}
-
 function eqfeed_callback(results) {
-  map.data.addGeoJson(results);
+  var heatmapData = [];
+  for (var i = 0; i < results.features.length; i++) {
+    var coords = results.features[i].geometry.coordinates;
+    var latLng = new google.maps.LatLng(coords[1], coords[0]);
+    heatmapData.push(latLng);
+  }
+  var heatmap = new google.maps.visualization.HeatmapLayer({
+    data: heatmapData,
+    dissipating: false,
+    map: map
+  });
 }
 </script>
 
