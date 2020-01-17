@@ -33,8 +33,8 @@
 </div>
 
 <div class="rowContainer">
-    <h2 class="wide">WINE COUNTRY</h2>
-    <p class="opacity"><i>The Map, The Main, The Merlot</i></p>
+    <h2 class="wide">EARTH QUAKES</h2>
+    <p class="opacity"><i>The Map, The Main, The Tectonic Shift</i></p>
     <p class="justify">One look at the lush, expansive hills and valleys of Niagara and you’ll know. This is wine country. In fact, the Niagara Peninsula is one of the most acclaimed grape-growing and winemaking regions in Ontario. Gently blanketing much of the Niagara countryside, the countless vineyards and wineries offer a wide array of one-of-kind, intimate experiences. Whether you’re a serious connoisseur, or a wandering grazer more interested in food and views, our portfolio of wineries is a great place to start when planning your next trip.
         If you’ve never experienced a tasting room or a winery tour you’ll quickly become hooked. Each winery in Niagara has a unique atmosphere, its own winemaker and beautifully crafted wines that embody “terroir;” wine speak that simply means that the wine reflects the soils and conditions in which the grapes have been grown. This is where tasting becomes so important as you sip and savour to discover your preferences.</p>
 </div>
@@ -46,46 +46,36 @@
 </div>
 
 <script>
+
 var map;
-
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      center: new google.maps.LatLng(43.153788, -79.359419),
-      mapTypeId: 'terrain'
-    });
-      // Create an array of alphabetical characters used to label the markers.
-      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    // Add some markers to the map.
-    // Note: The code uses the JavaScript Array.prototype.map() method to
-    // create an array of markers based on a given "locations" array.
-    // The map() method here has nothing to do with the Google Maps API.
-    var markers = locations.map(function(location, i) {
-        return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length]
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: new google.maps.LatLng(2.8,-187.3),
+          mapTypeId: 'terrain'
         });
-    });
 
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
 
-        // Add a marker clusterer to manage the markers.
-    var markerCluster = new MarkerClusterer(map, markers,
-        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-}   
-    var locations = [
-    {lat: 43.158998, lng: -79.367494},
-    {lat: 43.148829, lng: -79.382286},
-    {lat: 43.140542, lng: -79.394551},
-    {lat: 43.151782, lng: -79.400770},
-    {lat: 43.151837, lng: -79.411521},
-    {lat: 43.174215, lng: -79.361350},
-    ]         
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
+      }
 
-</script>
-
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
 </script>
 
 <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjkiwUsMLA-u_g790hP4xMpyGhxs6IoGI&callback=initMap">
