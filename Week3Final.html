@@ -53,8 +53,13 @@ var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
-      center: new google.maps.LatLng(43.684779, -79.444011),
+      center: new google.maps.LatLng(43.684779,-79.444011),
       mapTypeId: 'terrain'
+    });
+    ripleys = {lat:43.642730, lng:-79.385950}
+    var marker = new google.maps.Marker({
+        position: ripleys,
+        map: map
     });
       var promise = $.getJSON("Cancer_Rates.geojson"); //same as map.data.loadGeoJson();
 			map.data.addGeoJson(promise);  
