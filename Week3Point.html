@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Grayson Mortimer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+
+
+<header>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Week3 Content</a>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="Week3.html">Week 3 Content</a>
+            <a href="Week3Final.html">Final Section</a>
+          </div>
+        </li>
+      </ul>
+</header>
+
+
+  <body>
+
+  <div class="headerblock">
+    <img class="headerimage" src="me.jpg" alt="Me" width="1500" height="600">
+    <div class="headertextbox">
+      <h1>GRAYSON MORTIMER</h1>
+      <h3>GEO-WIZZARD</h3>
+    </div>
+</div>
+
+<div class="rowContainer">
+    <h2 class="wide">Ripley's Aquarium</h2>
+    <p class="opacity"><i>The Map, The Main, The Mire</i></p>
+    <p class="justify">Immerse yourself in a world of 20,000 aquatic animals and discover your own underwater adventure. The Aquarium features North America’s longest underwater viewing tunnel with more than 5.7 million litres of water and over 100 interactive opportunities. Get up close and personal with several touch exhibits featuring horseshoe crabs, sharks, scarlet cleaner shrimp, and stingrays as well as daily dive shows every 2 hours. This awe-inspiring attraction consists of nine carefully curated galleries showcasing a cross section of saltwater and freshwater environments from around the world – starting with species from Toronto’s backyard, the Great Lakes basin.</p>
+</div>
+
+<div class="rowContainer">
+    <div class="mapholder">
+        <div id="map"></div>
+    </div>
+</div>
+
+<script>
+var map;
+
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(43.684779,-79.444011),
+      mapTypeId: 'terrain'
+    });
+    ripleys = {lat:43.642730, lng:-79.385950};
+    var marker = new google.maps.Marker({
+        position: ripleys,
+        map: map
+    });         
+}
+</script>
+
+
+<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjkiwUsMLA-u_g790hP4xMpyGhxs6IoGI&callback=initMap">
+</script>
+
+
+  </body>
+</html>
