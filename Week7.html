@@ -1,53 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<title>Grayson Mortimer</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
-
-
-<header>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li class="dropdown">
-          <a href="javascript:void(0)" class="dropbtn">Week3 Content</a>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="Week3.html">Week 3 Content</a>
-            <a href="Week3Final.html">Final Section</a>
-          </div>
-        </li>
-      </ul>
-</header>
-
-
-  <body>
-
-  <div class="headerblock">
-    <img class="headerimage" src="me.jpg" alt="Me" width="1500" height="600">
-    <div class="headertextbox">
-      <h1>GRAYSON MORTIMER</h1>
-      <h3>GEO-WIZZARD</h3>
-    </div>
-</div>
-
-<div class="rowContainer">
-    <h2 class="wide">EARTH QUAKES</h2>
-    <p class="opacity"><i>The Map, The Main, The Tectonic Shift</i></p>
-    <p class="justify">An earthquake (also known as a quake, tremor or temblor) is the shaking of the surface of the Earth resulting from a sudden release of energy in the Earth's lithosphere that creates seismic waves. Earthquakes can range in size from those that are so weak that they cannot be felt to those violent enough to propel objects (and people) into the air, and wreak destruction across entire cities. The seismicity, or seismic activity, of an area is the frequency, type, and size of earthquakes experienced over a period of time. The word tremor is also used for non-earthquake seismic rumbling.
-
-        At the Earth's surface, earthquakes manifest themselves by shaking and displacing or disrupting the ground. When the epicenter of a large earthquake is located offshore, the seabed may be displaced sufficiently to cause a tsunami. Earthquakes can also trigger landslides and occasionally, volcanic activity.</p>
-</div>
-
-<div class="rowContainer">
-    <div class="mapholder">
-        <div id="viewDiv"></div>
-    </div>
-</div>
-
-<script>
-    <script src="https://js.arcgis.com/4.13/"></script>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS JavaScript Tutorials: Create a Starter App</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  
+  <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.13/"></script>
   
   <script>  
     require([
@@ -94,7 +60,8 @@ var ProvLabels = {
       
     });
   </script>
-
-
-  </body>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
 </html>
