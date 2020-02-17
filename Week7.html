@@ -42,44 +42,58 @@
 
 <div class="rowContainer">
     <div class="mapholder">
-        <div id="map"></div>
+        <div id="viewDiv"></div>
     </div>
 </div>
 
 <script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 2,
-        center: new google.maps.LatLng(2.8,-187.3),
-        mapTypeId: 'terrain'
+    <script src="https://js.arcgis.com/4.13/"></script>
+  
+  <script>  
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/FeatureLayer"
+    ], function(Map, MapView, FeatureLayer) {
+
+      var map = new Map({
+        basemap: "topo-vector"
       });
 
-      // Create a <script> tag and set the USGS URL as the source.
-      var script = document.createElement('script');
-      // This example uses a local copy of the GeoJSON stored at
-      // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-      script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-      document.getElementsByTagName('head')[0].appendChild(script);
-}
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-118.80500,34.02700],
+        zoom: 3
+      });
+var ProvLabels = {
+        symbol: {
+          type: "text",
+          color: "#FFFFFF",
+          haloColor: "#5E8D74",
+          haloSize: "2px",
+          font: {
+            size: "12px",
+            family: "Noto Sans",
+            style: "italic",
+            weight: "normal"
+          }
+        },
+        labelPlacement: "above-center",
+        labelExpressionInfo: {
+          expression: "$feature.PRNAME"
+        }
+      };
+       var CanadaProv = new FeatureLayer({
+        url:
+          "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/grmortimCanadaPro/MapServer/0",
+        labelingInfo: [ProvLabels]
+      });
 
-function eqfeed_callback(results) {
-  var heatmapData = [];
-  for (var i = 0; i < results.features.length; i++) {
-    var coords = results.features[i].geometry.coordinates;
-    var latLng = new google.maps.LatLng(coords[1], coords[0]);
-    heatmapData.push(latLng);
-  }
-  var heatmap = new google.maps.visualization.HeatmapLayer({
-    data: heatmapData,
-    dissipating: false,
-    map: map
-  });
-}
-</script>
-
-<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjkiwUsMLA-u_g790hP4xMpyGhxs6IoGI&libraries=visualization&callback=initMap">
-</script>
+      map.add(CanadaProv);
+      
+    });
+  </script>
 
 
   </body>
