@@ -55,9 +55,15 @@ var ProvLabels = {
           "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/grmortimCanadaPro/MapServer/0",
         labelingInfo: [ProvLabels]
       });
-
-      map.add(CanadaProv);
       
+             var WorldCities = new FeatureLayer({
+        url:
+          "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer/0",
+      });
+      
+      
+      map.add(CanadaProv);
+      map.add(WorldCities);
     });
   </script>
 </head>
