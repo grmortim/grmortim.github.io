@@ -50,10 +50,105 @@ var ProvLabels = {
           expression: "$feature.PRNAME"
         }
       };
+      
+    var renderer = {
+  type: "unique-value",  // autocasts as new UniqueValueRenderer()
+  field: "FID",
+  defaultSymbol: { type: "simple-fill" },
+  uniqueValueInfos: [{
+    // All features with value of "North" will be blue
+    value: "0",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [255,204,102,0.5]
+    }
+  }, {
+    // All features with value of "East" will be green
+    value: "1",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [157,81,187,0.5]
+    }
+  }, {
+    // All features with value of "South" will be red
+    value: "2",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [10,125,55,0.5]
+    }
+  }, {
+    // All features with value of "West" will be yellow
+    value: "3",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [255,105,105,0.5]
+    }
+    }, {
+    // All features with value of "West" will be yellow
+    value: "4",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [255,102,179,0.5]
+    }}, {
+    // All features with value of "West" will be yellow
+    value: "5",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [255,102,255,0.5]
+    }}, {
+    // All features with value of "West" will be yellow
+    value: "6",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [217,102,255,0.5]
+    }}, {
+    // All features with value of "West" will be yellow
+    value: "7",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [140,102,255,0.5]
+    }}, {
+    // All features with value of "West" will be yellow
+    value: "8",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [102,217,255,0.5]
+    }}, {
+    // All features with value of "West" will be yellow
+    value: "9",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [102,255,255,0.5]
+    }}, {
+    // All features with value of "West" will be yellow
+    value: "10",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [179,255,102,0.5]
+    }
+    }, {
+    // All features with value of "West" will be yellow
+    value: "11",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [255,102,102,0.5]
+    }}, {
+    // All features with value of "West" will be yellow
+    value: "12",
+    symbol: {
+      type: "simple-fill",  // autocasts as new SimpleFillSymbol()
+      color: [255,204,102,0.5]
+    }
+  }]
+      
+      
+    }; 
+    
        var CanadaProv = new FeatureLayer({
         url:
           "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99/grmortimCanadaPro/MapServer/0",
-        labelingInfo: [ProvLabels]
+        labelingInfo: [ProvLabels],
+        renderer: renderer
       });
       
              var WorldCities = new FeatureLayer({
